@@ -1,7 +1,9 @@
 C0CDACM ; GPL - Patient Portal - CCDA Mapping Routines ;11/22/13  17:05
  ;;0.1;JJOHPP;nopatch;noreleasedate;Build 1
  ;
- ; License AGPL v3.0
+ ; Copyright George Lilly 2013-2020 
+ ; License AGPL v3.0 or later
+ ; See https://www.gnu.org/licenses/agpl-3.0.en.html
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.

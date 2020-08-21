@@ -2,6 +2,8 @@ C0CDAOR ;SLC/MKB/GPL -- eRx Medication extract for CCDA ;10/4/13  15:29
  ;;1.0;CCDA;**1**;Sep 01, 2011;Build 1
  ;;Per VHA Directive 2004-038, this routine should not be modified.
  ;
+ ;
+ ;
  ; External References          DBIA#
  ; -------------------          -----
  ; ^OR(100                       5771

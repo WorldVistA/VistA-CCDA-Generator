@@ -1,7 +1,9 @@
 C0CDAQH ; GPL - QRDA Header Routines ;/14/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; License AGPL v3.0
+ ; Copyright George Lilly 2013-2020 
+ ; License AGPL v3.0 or later
+ ; See https://www.gnu.org/licenses/agpl-3.0.en.html
  ; 
  Q
  ;
