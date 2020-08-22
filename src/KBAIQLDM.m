@@ -1,6 +1,10 @@
 KBAIQLDM ; GPL - QRDA loader entry routines ; 3/8/15 6:03pm
  ;;0.1;QRDA LOADER;nopatch;noreleasedate;Build 1
  ;
+ ; Copyright George Lilly 2013-2020 
+ ; License AGPL v3.0 or later
+ ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ;
  Q
  ;
 INITMAPS ; initialize maps 
