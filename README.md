@@ -1,10 +1,10 @@
 # VistA-CCDA-Generator
 
-This VistA CCD-A Generator project is for Health Level 7 (HL7) Clinical Document Architecture (CDA) XML-based patient data output for exchange from World Vista systems running on linux with supplemental info for other systems.
+This VistA CCD-A Generator project is for Health Level 7 (HL7) Clinical Document Architecture (CDA) XML-based patient data output for exchange from World Vista systems.
 
 # Pre-Installation Requirements
 
-[Docker Engine](https://docs.docker.com/engine/install/ubuntu/) for linux or [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) for Windows 10.
+[Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows/) or [Docker Engine](https://docs.docker.com/engine/install/ubuntu/) for linux
 
 
 [WorldVistA EHR](https://hub.docker.com/r/worldvista/worldvista-ehr)
@@ -12,20 +12,11 @@ This VistA CCD-A Generator project is for Health Level 7 (HL7) Clinical Document
 
 [M-Web-Server by Sam Habiel](https://github.com/shabiel/M-Web-Server/) [Add Services Below]
 
-
-
 [VISTA XML Processing Utilities by Sam Habiel](https://github.com/shabiel/VISTA-xml-processing-utilities) [If you are not on World VistA only]
 
 # Installation
 
-'docker exec -it wv2 su - wv'
-
-From here you can get the rest of the dependencies and place them in the proper folders.
-
-
-`git clone https://github.com/WorldVistA/VistA-CCDA-Generator/`
-
-`cp *.m ~/p/`
+Add M-Web-Server Services 
 
 `mumps -dir`
 
@@ -37,6 +28,20 @@ From here you can get the rest of the dependencies and place them in the proper 
 
 `d addService^%webutils("GET","ccda/{patientId}","wsCCDA^C0CDA")`
 
+Clone VistA-CCDA-Generator
 
+`git clone https://github.com/WorldVistA/VistA-CCDA-Generator/`
 
-wget http://syn.vistaplex.org/css/CDA.xsl
+Move clone to the (p)atches folder
+
+`cp *.m ~/p/`
+
+For missing CDA.xsl error
+
+`cd ~/www`
+
+`mkdir css`
+
+`cd css`
+
+`wget http://syn.vistaplex.org/css/CDA.xsl`
