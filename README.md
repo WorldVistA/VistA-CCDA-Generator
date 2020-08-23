@@ -1,6 +1,6 @@
 # VistA-CCDA-Generator
 
-This VistA CCD-A Generator project is for Health Level 7 (HL7) Clinical Document Architecture (CDA) XML-based patient data output for exchange from World Vista systems.
+This VistA CCD-A Generator project is for Health Level 7 (HL7) Clinical Document Architecture (CDA) XML-based patient data output for exchange from World Vista systems running on linux with supplemental info for other systems.
 
 # Pre-Installation Requirements
 
