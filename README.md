@@ -32,9 +32,13 @@ Add M-Web-Server Services
 
 Clone VistA-CCDA-Generator
 
+`cd ~/`
+
 `git clone https://github.com/WorldVistA/VistA-CCDA-Generator/`
 
 Move clone to the (p)atches folder
+
+`cd VistA-CCDA-Generator`
 
 `cp *.m ~/p/`
 
