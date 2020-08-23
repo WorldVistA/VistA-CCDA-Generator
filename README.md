@@ -20,13 +20,15 @@ Add M-Web-Server Services
 
 `mumps -dir`
 
-`S DUZ=1`
+`WV> S DUZ=1`
 
-`D ^XUP`
+`WV> D ^XUP`
 
-`d addService^%webutils("GET","resources/*","FILESYS^%webapi")`
+ Press 'Enter' back to prompt
 
-`d addService^%webutils("GET","ccda/{patientId}","wsCCDA^C0CDA")`
+`WV> d addService^%webutils("GET","resources/*","FILESYS^%webapi")`
+
+`WV> d addService^%webutils("GET","ccda/{patientId}","wsCCDA^C0CDA")`
 
 Clone VistA-CCDA-Generator
 
