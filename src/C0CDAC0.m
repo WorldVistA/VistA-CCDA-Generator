@@ -1,9 +1,7 @@
 C0CDAC0 ; GPL - Patient Portal - CCDA Routines ;9/18/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -22,9 +20,8 @@ CCDARPC(RTN,DFN,PARMS) ; generates a CCDA document for patient DFN
  ;
  ; create a work area for processing and clear it
  ;
- ;astro gpl
  D INITMAPS^KBAIQLDM ; make sure maps are initialized
- ; end astro gpl
+ ;
  S C0WRK=$NA(^TMP("CCDA",$J)) ; work area root for entire process
  K @C0WRK ; make sure it is clear to begin
  S C0BCTRL=$NA(@C0WRK@("CTRL"))
