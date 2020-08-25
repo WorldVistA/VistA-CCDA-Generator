@@ -1,9 +1,7 @@
 C0CDAC5 ; GPL - Patient Portal - CCDA Routines ;09/23/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -31,7 +29,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  I CCDAV1("results","labs@total")=1 D  ;
  . M CCDAV(1)=CCDAV1("results","labs")
  E  M CCDAV=CCDAV1("results","labs")
- D URINEAPP(.CCDAV) ; add urine appearance result
+ ;D URINEAPP(.CCDAV) ; add urine appearance result
  S @CCDARPT@("EXTRACT-ENDS")=$$NOW^XLFDT
  ;
  ; deterimine if there are labs in the date range
@@ -67,7 +65,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  F  S C0I=$O(CCDAV(C0I)) Q:+C0I=0  D  ;
  . N C0DATE S C0DATE=$G(CCDAV(C0I,"lab","collected@value"))
  . Q:$$SKIP^C0CDACV(C0DATE,.PARMS)
- . ; exclusion - astro gpl
+ . ; exclusion -  gpl
  . I $G(CCDAV(C0I,"lab","collected@value"))=3180219 I DFN=13194 Q  ;
  . ; end exclusion
  . N GGID S GGID="uri_"_$G(CCDAV(C0I,"lab","id@value"))
@@ -79,14 +77,14 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . I C0DATE'="" S C0ARY(C0N,1)=$$HTMLDT^C0CDACU(C0DATE) ; date
  . E  S C0ARY(C0N,1)="" ; no date
  . S C0ARY(C0N,1,"ID")=$G(CCDAV(C0I,"lab","uri"))
- . ; astro gpl
+ . ;  gpl
  . N LABNAME,LOINCODE SET LABNAME=$G(CCDAV(C0I,"lab","test@value"))
  . ;D INITMAPS^KBAIQLDM
  . SET LOINCODE=$$UNMAP^KBAIQLDM(LABNAME,"labs")
  . IF LOINCODE="" S C0ARY("code")="UNK" S LOINCODE="UNK"
  . ELSE  S C0ARY("code")=LOINCODE
  . ;s ^gpl("lab",LOINCODE)=LABNAME
- . ; end astro gpl
+ . ; end  gpl
  . S C0ARY(C0N,2)=CCDAV(C0I,"lab","test@value")_" (LOINC: "_LOINCODE_")" ; lab test name
  . S C0ARY(C0N,2)=$$CHARCHK^MXMLBLD(C0ARY(C0N,2)) ; make the result XML safe
  . I $G(CCDAV(C0I,"lab","localName@value"))="PROTEIN" S CCDAV(C0I,"lab","result@value")=100
@@ -98,7 +96,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . . S CCDAV(C0I,"lab","units@value")="mg/dL"
  . I DFN=13194 D  ; fix error in this patient
  . . I LOINCODE="50544-6" S CCDAV(C0I,"lab","result@value")=10
- . ; end astro
+ . ; end 
  . NEW LUNITS S LUNITS=$G(CCDAV(C0I,"lab","units@value")) ; lab test result value 
  . I LUNITS="" S LUNITS=$$MAP^KBAIQLDM(LOINCODE,"units")
  . S C0ARY(C0N,3)=$G(CCDAV(C0I,"lab","result@value"))_" "_LUNITS
@@ -137,7 +135,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . N C0DATE S C0DATE=CCDAV(C0I,"lab","collected@value")
  . S C0DATE2=$$FMDTOUTC^C0CDACU(C0DATE)
  . Q:$$SKIP^C0CDACV(C0DATE,.PARMS)
- . ; exclusion - astro gpl
+ . ; exclusion -  gpl
  . I $G(CCDAV(C0I,"lab","collected@value"))=3180219 I DFN=13194 Q  ;
  . ; end exclusion
  . I $$REDACT^C0CDACV(CCDAV(C0I,"lab","uri"),.PARMS) D  Q  ;
@@ -148,7 +146,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . S C0ARY("labTestText")=$G(CCDAV(C0I,"lab","test@value"))
  . S C0ARY("labDisplayName")=$G(CCDAV(C0I,"lab","test@value"))
  . ; adding loinc here
- . ; astro gpl
+ . ;  gpl
  . N LABNAME,LOINCODE SET LABNAME=$G(CCDAV(C0I,"lab","test@value"))
  . D INITMAPS^KBAIQLDM
  . SET LOINCODE=$$UNMAP^KBAIQLDM(LABNAME)
@@ -156,7 +154,7 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . ELSE  S C0ARY("code")=LOINCODE
  . I DFN=13194 D  ; fix error in this patient
  . . I LOINCODE="50544-6" S CCDAV(C0I,"lab","result@value")=10
- . ; end astro gpl
+ . ; end  gpl
  . S C0ARY("codeSystemOID")="2.16.840.1.113883.6.1" ; loinc
  . S C0ARY("codeSystemName")="LOINC"
  . IF LABNAME="" S C0ARY("labDisplayName")="UNK" ; unknown 
@@ -172,12 +170,12 @@ LABS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . ;I LOINCODE="5811-5" S C0ARY("resultUnit")=""
  . ;S C0ARY("resultUnit")=$$CHARCHK^MXMLBLD(C0ARY("resultUnit"))
  . S C0ARY("resultValue")=$G(CCDAV(C0I,"lab","result@value"))
- . ; astro gpl
+ . ;  gpl
  . I C0ARY("resultValue")="Neg" S C0ARY("resultValue")="Negative"
- . ; astro gpl
+ . ;  gpl
  . S C0ARY("referenceLow")=$G(CCDAV(C0I,"lab","low@value"))
  . S C0ARY("referenceHigh")=$G(CCDAV(C0I,"lab","high@value"))
- . ; end astro
+ . ; end 
  . I $G(CCDAV(C0I,"lab","low@value"))'="" S C0ARY("referenceRangeText")="low:  "_CCDAV(C0I,"lab","low@value")_" high: "_CCDAV(C0I,"lab","high@value")_" units: "_$G(CCDAV(C0I,"lab","units@value"))
  . S C0ARY("referenceRangeText")=$G(C0ARY("referenceRangeText")) ; 
  . ;
@@ -376,10 +374,10 @@ URINEAPP(CCDAV1) ; inserts a lab test for Urine appearance of CLEAR
  N ZIEN S ZIEN=$O(CCDAV(""),-1)+1
  ;
  S CCDAV(ZIEN,"lab","collected@value")=3171027
- S CCDAV(ZIEN,"lab","comment")="NOTICE: Lab values entered manually. Typographical/human error possible.  Ordering Provider: Albert Davis Report Released Date/Time: Oct 27, 2017 Performing Lab: ASTRONAUT HARRRIS COUNTY NET [CLIA# 12345698771AB] 3519 Blue Bonnet HOUSTON, TX 77025 "
+ S CCDAV(ZIEN,"lab","comment")="NOTICE: Lab values entered manually. "
  S CCDAV(ZIEN,"lab","comment@xml:space")="preserve"
  S CCDAV(ZIEN,"lab","facility@code")=580
- S CCDAV(ZIEN,"lab","facility@name")="ASTRONAUT HARRRIS COUNTY NET"
+ S CCDAV(ZIEN,"lab","facility@name")="VISTA HEALTH CARE"
  S CCDAV(ZIEN,"lab","high@value")=" 0"
  S CCDAV(ZIEN,"lab","id@value")="CH;6828972;999"
  S CCDAV(ZIEN,"lab","localName@value")="APPEARANCE "

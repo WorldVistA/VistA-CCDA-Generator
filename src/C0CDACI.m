@@ -1,9 +1,7 @@
 C0CDACI ; GPL - Patient Portal - CCDA Routines ;09/17/13  17:05
  ;;0.1;JJOHPP;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -195,9 +193,9 @@ SETMAP ;
  S @G@(8,"preferredName")="Hep B, adolescent or pediatric"
  S @G@(9,"CPT")=90718
  S @G@(9,"CVXcode")=9
- ; astro gpl
+ ; gpl
  ;S @G@(9,"altName",1)="TETANUS DIPTHERIA (TD-ADULT)"
- ; end astro
+ ; end
  S @G@(9,"preferredName")="Td (adult), adsorbed"
  S @G@(10,"CPT")=90713
  S @G@(10,"CVXcode")=10
@@ -467,9 +465,9 @@ SETMAP ;
  S @G@(106,"altName",9)="DTaP2"
  S @G@(106,"altName",10)="DTaP3"
  S @G@(106,"altName",11)="DTaP4"
- ; astro gpl
+ ; gpl
  S @G@(106,"altName",12)="TETANUS DIPTHERIA (TD-ADULT)"
- ; end astro
+ ; end
  S @G@(106,"preferredName")="DTaP, 5 pertussis antigens"
  S @G@(110,"CPT")=90723
  S @G@(110,"CVXcode")=110
@@ -567,11 +565,11 @@ SETMAP ;
  S @G@(158,"CPT")=90688
  S @G@(158,"CVXcode")=158
  S @G@(158,"preferredName")="influenza, injectable, quadrivalent"
- ; astro gpl
+ ; gpl
  S @G@(166,"preferredName")="influenza, intradermal, quadrivalent, preservative free"
  S @G@(166,"altName",1)="INFLUENZA-H1N1-09, NOVEL (PANDEMIC)"
  S @G@(166,"CVXcode")=166
- ; end astro
+ ; end
  S @G@(999,"CPT")=90749
  S @G@(999,"CVXcode")=999
  S @G@(999,"preferredName")="unknown"
@@ -673,7 +671,7 @@ SETMAP ;
  S @G@("B","IGIV",87)=""
  S @G@("B","INFLUENZA",88)=""
  S @G@("B","INFLUENZA B",17)=""
- ; astro gpl
+ ; gpl
  S @G@("B","INFLUENZA-H1N1-09, NOVEL (PANDEMIC)",166)=""
  ; end gpl 
  S @G@("B","IPV",10)=""
@@ -742,10 +740,10 @@ SETMAP ;
  S @G@("B","RV 4 PEDS",116)=""
  S @G@("B","SMALLPOX",75)=""
  S @G@("B","SWINE FLU BIVAL",43)=""
- ; astro gpl
+ ; gpl
  ;S @G@("B","TETANUS DIPTHERIA (TD-ADULT)",9)=""
  S @G@("B","TETANUS DIPTHERIA (TD-ADULT)",106)=""
- ; end astro
+ ; end
  S @G@("B","TETANUS TOXOID",35)=""
  S @G@("B","TETANUS, DIPTHERIA AND PERTUSSIS",115)=""
  S @G@("B","TIG",13)=""

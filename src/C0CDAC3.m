@@ -1,9 +1,7 @@
 C0CDAC3 ; GPL - Patient Portal - CCDA Routines ;09/17/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -45,7 +43,7 @@ PROBLEMS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . N C0DATE S C0DATE=CCDAV("problem",C0I,"entered@value")
  . S CCDAV("problem",C0I,"uri")="uri_9000011-"_$G(CCDAV("problem",C0I,"id@value"))
  . Q:$$REDACT^C0CDACV(CCDAV("problem",C0I,"uri"),.PARMS)
- . ; astro gpl
+ . ; gpl
  . ;
  . N PROB S PROB=$G(CCDAV("problem",C0I,"name@value"))
  . I PROB["449868002" Q  ;
@@ -53,7 +51,7 @@ PROBLEMS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . I PROB["211896002" Q  ;
  . N ICDVALUE S ICDVALUE=$G(CCDAV("problem",C0I,"icd@value"))
  . I ICDVALUE["Z71.1" Q  ;
- . ; end astro
+ . ; end gpl
  . ;
  . S C0N=C0N+1
  . S C0ARY(C0N,1)=$$HTMLDT^C0CDACU(C0DATE) ; problem date

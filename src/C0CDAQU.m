@@ -1,16 +1,13 @@
 C0CDAQU ; GPL - QRDA Utility Routines ;6/24/17  17:05
  ;;0.1;C0CDAQ;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
- ;
+ ; License AGPL v3.0
  ; 
  Q
  ;
 ADDTEMP(TEMPOID,VSOID,DOMAIN) ; add a Template OID and ValueSet OID to the C0CDAQ XML TEMPLATE file (176.901)
  ;
- ; gpl astro
+ ; gpl 
  q
  ;
  N FN S FN=176.901

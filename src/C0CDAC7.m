@@ -1,9 +1,7 @@
 C0CDAC7 ; GPL - Patient Portal - CCDA Routines ;09/17/13  17:05
- ;;0.1;JJOHPP;nopatch;noreleasedate;Build 1
+ ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -155,7 +153,7 @@ SNOTBL(ZA) ; initializes smoking health factor snomed lookup table
  S @ZA@("STATUS-NEVER SMOKER (004)",266919005,"Never smoker.")=""
  S @ZA@("STATUS-SMOKER, CURRENT STATUS UNK (005)",77176002,"Smoker, current status unknown.")=""
  S @ZA@("STATUS-UNKNOWN IF EVER SMOKED (009)",266927001,"Unknown if ever smoked.")=""
- ; gpl astro
+ ; gpl
  S @ZA@("TMG TOBACCO EVERYDAY USER",449868002,"Smokes tobacco daily (finding)")=""
  Q
  ;

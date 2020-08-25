@@ -1,9 +1,7 @@
 C0CDAC2 ; GPL - CCDA Header Routines ;/14/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -55,7 +53,7 @@ HEADER(CCDABLD,DFN,CCDAWRK,CCDARPT,CCDACTRL) ; create a ccda header for patient 
  I $G(PARMS("error"))'="" D  Q  ;
  . S @CCDACTRL@("PARMS","error")=$G(PARMS("error"))
  ;
- ; gpl astro
+ ; gpl
  ;
  N VARS2 ; for second mapping
  S VARS2("suffix")=""
@@ -67,7 +65,7 @@ HEADER(CCDABLD,DFN,CCDAWRK,CCDARPT,CCDACTRL) ; create a ccda header for patient 
  N C0D S C0D=$G(PARMS("date"))
  ;
  I C0D="" S C0D=$$NOW^XLFDT
- ; end gpl astro
+ ; end gpl
  I C0D'="" S CCDAV("docOfDate")=$$FMDTOUTC^C0CDACU(C0D)
  S CCDAV("docCreated")=$$FMDTOUTC^C0CDACU($$NOW^XLFDT())
  S CCDAV("encompassingEncounterExtension")=$$UUID^C0CDACU() ; random
@@ -76,7 +74,7 @@ HEADER(CCDABLD,DFN,CCDAWRK,CCDARPT,CCDACTRL) ; create a ccda header for patient 
  ; build the header
  S CCDATYPE="HEADER"
  S WRK=$NA(@CCDAWRK@(CCDATYPE))
- ; astro gpl
+ ;  gpl
  I $G(PARMS("GPLTEST"))=1 B
  I $G(CCDAV("raceCode"))="UNK" D GETNMAP^C0CDACU(WRK,"THEADER3^C0CDAC2","CCDAV")
  I $G(CCDAV("raceCode"))'="UNK" D  ;
@@ -88,7 +86,7 @@ HEADER(CCDABLD,DFN,CCDAWRK,CCDARPT,CCDACTRL) ; create a ccda header for patient 
  M @WRK=WRK2
  ;M ^gpl("JUSTMAP")=@WRK
  ;M ^gpl("WRK2")=WRK2
- ; end astro gpl
+ ; end gpl
  D QUEUE^MXMLTMPL(CCDABLD,WRK,1,@WRK@(0))
  ;N LAST1
  ;S LAST1(1)="</structuredBody>"
@@ -119,7 +117,7 @@ HEADER(CCDABLD,DFN,CCDAWRK,CCDARPT,CCDACTRL) ; create a ccda header for patient 
  Q
  ;
 RACECODE2(DFN) ; returns 1 if health factor for secondary race code
- ; is present - astro gpl
+ ; is present - gpl
  N C0CHF
  D GETPAT^C0CDACE(.C0CHF,DFN,"health-factors")
  ;ZWR C0CHF
@@ -171,11 +169,11 @@ SETORGV(ARY,ADUZ,ADUZ2) ; sets organization variables based on the DUZ
  S ARY("orgNPI")=$$GET1^DIQ(4,UDUZ2_",",41.99) ;
  I $G(ARY("orgNPI"))="" S ARY("orgNPI")="UNK" 
  S ARY("healthCareFacilityExtension")=UDUZ2_"^"_ARY("orgShortName")
- ; gpl astro
+ ; gpl
  N C0CTEL S C0CTEL=$$GET1^DIQ(4.03,"1,"_UDUZ2_",",.03)
  ;S ARY("orgTelephone")="tel:"_$$GET1^DIQ(4.03,"1,"_UDUZ2_",",.03)
  S ARY("orgTelephone")=$S(C0CTEL="":"",1:"tel:"_C0CTEL)
- ; end gpl astro
+ ; end gpl
  N NAME S NAME=$P(^VA(200,UDUZ,0),U)
  D NAMECOMP^XLFNAME(.NAME)
  S ARY("assignedPersonGivenName")=NAME("GIVEN")
@@ -201,7 +199,7 @@ SETPATV(ARY) ; set patient variables
  ;
  I '$D(ARY("icn@value")) S ARY("icn@value")="UNK"
  S ARY("birthTime")=$$FMDTOUTC^C0CDACU(ARY("dob@value"))
- ; gpl astro
+ ; gpl
  N GNAME S GNAME=$G(@VPRDEM@("givenNames@value"))
  ;I GNAME[" " D  ; there is a middle name
  D  ;
@@ -244,7 +242,7 @@ SETPATV(ARY) ; set patient variables
  . ;M ^gpl("TELE")=TELE
  . ;M ^gpl("VARS2")=VARS2
  . ;M ^gpl("DEM")=@VPRDEM
- ; end gpl astro
+ ; end gpl
  ;S ARY("maritalCode")=$P(VADM(10),U,1)
  N MARCD
  S MARCD=$G(@VPRDEM@("maritalStatus@value"))
@@ -269,7 +267,7 @@ SETPATV(ARY) ; set patient variables
  S ARY("religionName")=$P(VADM(9),U,2)
  ;S ARY("raceCode")=$P($G(VADM(12,1)),U,1)
  S ARY("raceCode")=$G(@VPRDEM@("races","race@value"))
- ; astro gpl
+ ; gpl
  I ARY("raceCode")="" D  ;
  . NEW tmprace
  . S tmprace=$G(@VPRDEM@("races",1,"race@value"))
@@ -358,7 +356,7 @@ THEADER ;
  ;;</recordTarget>
  Q
  ;
-THEADER2 ; astro gpl - added second raceCode - need to generalize
+THEADER2 ; gpl - added second raceCode - need to generalize
  ;;<?xml version="1.0" encoding="utf-8" ?>
  ;;<?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
  ;;<ClinicalDocument classCode="DOCCLIN" moodCode="EVN" xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDASchemas\cda\Schemas\CDA.xsd">

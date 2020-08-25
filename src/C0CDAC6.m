@@ -1,9 +1,7 @@
 C0CDAC6 ; GPL - Patient Portal - CCDA Routines ;09/23/13  17:05
- ;;0.1;JJOHPP;nopatch;noreleasedate;Build 1
+ ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -138,7 +136,7 @@ VITALS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . . I C0ARY("measurement@units")="F" S C0ARY("measurement@units")="[degF]"
  . . S C0ARY("measurement@value")=$G(CCDAV(C0I,C0J,"measurement@value"))
  . . I $G(CCDAV(C0I,C0J,"measurement@metricValue"))'="" D  ;
- . . . ; astro gpl
+ . . . ; gpl
  . . . N C0V S C0V=$G(CCDAV(C0I,C0J,"measurement@metricValue"))
  . . . I C0V["." S C0V=$P(C0V,".",1)
  . . . S C0ARY("measurement@value")=C0V

@@ -1,9 +1,7 @@
 C0CDACP ; GPL - Patient Portal - CCDA Routines ;09/17/13  17:05
- ;;0.1;JJOHPP;nopatch;noreleasedate;Build 1
+ ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -123,7 +121,7 @@ PROC(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  ;
  Q
  ;
- ; astro gpl
+ ;  gpl
 HASCPTPROC(RTN,DFN) ; retrieve CPT codes that are missed by the VPR extract
  ; that are really valid procedures
  I '$D(^ICPT) Q  ;
@@ -229,7 +227,7 @@ HFPROC(RTN,DFN) ; retrieve procedures from Health Factors
  . . S RTN("results","procedures@total")=DESTIEN
  Q
  ;
- ; end astro gpl
+ ; end  gpl
  ;
 TPROCSEC ; 
  ;;<component>

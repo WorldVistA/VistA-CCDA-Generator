@@ -1,9 +1,7 @@
 C0CDACV ; GPL - Patient Portal - CCDA Routines ;09/17/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -47,7 +45,7 @@ ENC(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . N ENCURI S ENCURI=$G(PARMS("ENCOUNTER"))
  . I ENCURI'="" I CCDAV(C0I,"visit","uri")'=ENCURI Q  ;
  . Q:$$REDACT(CCDAV(C0I,"visit","uri"),.PARMS)
- . ; exclusion section - astro gpl
+ . ; exclusion section -  gpl
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Tobacco use" Q  ;
  . I $G(CCDAV(C0I,"visit","type@code"))=99238 Q  ;
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Chronic" Q  ;
@@ -55,7 +53,7 @@ ENC(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . S C0N=C0N+1
  . I C0DATE'="" S C0ARY(C0N,4)=$$HTMLDT^C0CDACU(C0DATE) ; visit date
  . E  S C0ARY(C0N,4)=""
- . ; astro gpl
+ . ;  gpl
  . N REASON,REASONCD
  . I $G(CCDAV(C0I,"visit","reason@narrative"))'="" D  ; possible encounter diagnosis
  . . S REASON=$G(CCDAV(C0I,"visit","reason@narrative"))
@@ -97,7 +95,7 @@ ENC(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . K C0ARY
  . M C0ARY=CCDAV(C0I,"visit")
  . Q:$G(CCDAV(C0I,"visit","providers","provider@name"))=""
- . ; exclusion section - astro gpl
+ . ; exclusion section -  gpl
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Tobacco use" Q  ;
  . I $G(CCDAV(C0I,"visit","type@code"))=99238 Q  ;
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Chronic" Q  ;

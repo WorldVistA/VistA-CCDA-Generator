@@ -1,9 +1,7 @@
 C0CDAC2 ; GPL - Patient Portal - CCDA Header Routines ;/14/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -175,14 +173,14 @@ SETPATV(ARY) ; set patient variables
  N DOB S DOB=$$FMDTOUTC^C0CDACU(ARY("dob@value"))
  I $L(DOB)<14 S DOB=DOB_$E("00000000000000",1,14-$L(DOB))
  S ARY("birthTime")=DOB
- ; gpl astro
+ ; gpl 
  N GNAME S GNAME=$G(@VPRDEM@("givenNames@value"))
  I GNAME[" " D  ; there is a middle name
  . S ARY("given1")=""
  . S ARY("given2")=""
  . S ARY("given1")=$P(GNAME," ",1)
  . S ARY("given2")=$P(GNAME," ",2)
- ; end gpl astro
+ ; end gpl 
  ;S ARY("maritalCode")=$P(VADM(10),U,1)
  N MARCD
  S MARCD=$G(@VPRDEM@("maritalStatus@value"))

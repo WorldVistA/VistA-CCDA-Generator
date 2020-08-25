@@ -1,9 +1,7 @@
 C0CDAC4 ; GPL - Patient Portal - CCDA Routines ;09/23/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License AGPL v3.0
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -16,11 +14,11 @@ MEDS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  I $D(@CCDACTRL@("PARMS")) M PARMS=@CCDACTRL@("PARMS")
  S MEDMODE=$G(PARMS("MEDS")) ; ALL, ACTIVE, or FILTER1
  ; FILTER1 shows all active meds and all inactive in the time range
- ; astro gpl
+ ; gpl
  I MEDMODE="" D  ;
  . S MEDMODE="ACTIVE"
  . S PARMS("MEDS")="ACTIVE"
- ; end astro
+ ; end
  S HAVDTS=0
  I $D(PARMS("startDateTime")) S HAVDTS=1
  S @CCDARPT@("STATUS")="EXTRACTING"
