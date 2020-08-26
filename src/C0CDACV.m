@@ -95,7 +95,7 @@ ENC(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . K C0ARY
  . M C0ARY=CCDAV(C0I,"visit")
  . Q:$G(CCDAV(C0I,"visit","providers","provider@name"))=""
- . ; exclusion section -  gpl
+ . ; exclusion section - a gpl
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Tobacco use" Q  ;
  . I $G(CCDAV(C0I,"visit","type@code"))=99238 Q  ;
  . I $G(CCDAV(C0I,"visit","reason@narrative"))="Chronic" Q  ;
