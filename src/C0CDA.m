@@ -1,9 +1,7 @@
 C0CDA ; GPL - CCDA Routines ;9/18/13  17:05
  ;;0.1;C0CDA;nopatch;noreleasedate;Build 1
  ;
- ; Copyright George Lilly 2013-2020 
- ; License AGPL v3.0 or later
- ; See https://www.gnu.org/licenses/agpl-3.0.en.html
+ ; License Apache 2
  ; 
  ; This software was funded in part by Oroville Hospital, and was
  ; created with help from Oroville's doctors and staff.
@@ -270,7 +268,7 @@ FILTERV(PARM,DFN) ; modify the Parm array to select the visits to be extracted.
  . S RSLT=$$DODATES^C0CDAC0(.VIS,.PARM)
  I $G(PARM("SELECT"))="LATEST" D  Q 1 ;
  . M PARM=VIS(1)
- . I $G(VIS(1,"visitType")="inpatient" D EXTENDIP(.VIS,.PARM,1))
+ . I $G(VIS(1,"visitType"))="inpatient" D EXTENDIP(.VIS,.PARM,1))
  S RSLT=0
  I $G(PARM("SELECT"))="LATESTOP" D  Q RSLT ;
  . N ZI S ZI=""
