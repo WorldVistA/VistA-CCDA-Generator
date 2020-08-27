@@ -268,7 +268,7 @@ FILTERV(PARM,DFN) ; modify the Parm array to select the visits to be extracted.
  . S RSLT=$$DODATES^C0CDAC0(.VIS,.PARM)
  I $G(PARM("SELECT"))="LATEST" D  Q 1 ;
  . M PARM=VIS(1)
- . I $G(VIS(1,"visitType"))="inpatient" D EXTENDIP(.VIS,.PARM,1))
+ . I $G(VIS(1,"visitType"))="inpatient" D EXTENDIP(.VIS,.PARM,1)
  S RSLT=0
  I $G(PARM("SELECT"))="LATESTOP" D  Q RSLT ;
  . N ZI S ZI=""

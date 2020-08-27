@@ -82,11 +82,12 @@ MEDS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . I CCDAV(C0I,"med","vaType@value")="N" D  ; non-VA med
  . . I CCDAV(C0I,"med","sig")["|" D  ;
  . . . S CCDAV(C0I,"med","name@value")=$P(CCDAV(C0I,"med","sig"),"|",1) ;eRx
- . . . S CCDAV(C0I,"med","name@value")=$$SYMENC^MXMLUTL(CCDAV(C0I,"med","name@value")) ; xml safe
+ . . . N MEDNAME S MEDNAME=$G(CCDAV(C0I,"med","name@value"))
+ . . . S CCDAV(C0I,"med","name@value")=$$SYMENC^MXMLUTL(MEDNAME) ; xml safe
  . . . S CCDAV(C0I,"med","sig")=$$SYMENC^MXMLUTL($P(CCDAV(C0I,"med","sig"),"|",2)) ;eRx
  . . I $G(CCDAV(C0I,"med","doses","dose@units"))["|" D  ; eRx doses
  . . . S CCDAV(C0I,"med","doses","dose@dose")=$P(CCDAV(C0I,"med","doses","dose@units"),"|",2)
- . S C0ARY(C0N,2)=$$SYMENC^MXMLUTL(CCDAV(C0I,"med","name@value")) ; med name
+ . S C0ARY(C0N,2)=$$SYMENC^MXMLUTL($G(CCDAV(C0I,"med","name@value"))) ; med name
  . I $G(CCDAV(C0I,"med","RxNormCode@value"))'="" D  ;
  . . S C0ARY(C0N,2)=C0ARY(C0N,2)_" (RxNorm: "_CCDAV(C0I,"med","RxNormCode@value")_")"
  . ;S C0ARY(C0N,3)=$G(CCDAV(C0I,"med","doses","dose@dose"))_" "_$G(CCDAV(C0I,"med","doses","dose@units")) ; dose
@@ -95,8 +96,8 @@ MEDS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . ;I C0ARY(C0N,3)="0 " S C0ARY(C0N,3)="" ; surpress zero dose
  . ;S C0ARY(C0N,4)=$G(CCDAV(C0I,"med","form@value")) ; form
  . ;I CCDAV(C0I,"med","vaType@value")="V" D  ; IV 
- . . ;S C0ARY(C0N,3)=$G(CCDAV(C0I,"med","rate@value")) ; dose
- . . ;S C0ARY(C0N,4)="IV" ; form
+ . ;. ;S C0ARY(C0N,3)=$G(CCDAV(C0I,"med","rate@value")) ; dose
+ . ;. ;S C0ARY(C0N,4)="IV" ; form
  . ;S C0ARY(C0N,5)=$G(CCDAV(C0I,"med","doses","dose@route")) ; route
  . ;S C0ARY(C0N,6)=$G(CCDAV(C0I,"med","doses","dose@schedule")) ; frequency
  . S C0ARY(C0N,7)=$$SYMENC^MXMLUTL($G(CCDAV(C0I,"med","sig"))) ; directions
@@ -133,7 +134,7 @@ MEDS(BLIST,DFN,CCDAWRK,CCDARPT,CCDACTRL) ;
  . K C0ARY
  . M C0ARY=CCDAV(C0I,"med")
  . I $$REDACT^C0CDACV(CCDAV(C0I,"med","uri"),.PARMS) Q  ;
- . S C0ARY("medName")=CCDAV(C0I,"med","name@value")
+ . S C0ARY("medName")=$G(CCDAV(C0I,"med","name@value"))
  . S C0ARY("medID")="#"_$G(CCDAV(C0I,"med","uri"))
  . S C0ARY("guid")=$$UUID^C0CDACU() ; random guid
  . I $G(CCDAV(C0I,"med","status@value"))="active" D  ;
